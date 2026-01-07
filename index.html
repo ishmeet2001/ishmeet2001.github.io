@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Ishmeet | Data Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont;
@@ -13,67 +14,102 @@
       color: #222;
       line-height: 1.6;
     }
-    h1 { margin-bottom: 0; }
-    h2 { margin-top: 40px; }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .hero a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .primary-btn {
+      background: #2563eb;
+    }
+
+    .secondary-btn {
+      background: #374151;
+    }
+
+    h2 {
+      margin-top: 60px;
+    }
+
     .project {
       border: 1px solid #ddd;
       border-radius: 6px;
       padding: 16px;
       margin-bottom: 20px;
     }
+
     .stack {
       color: #555;
       font-size: 0.9em;
     }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-      margin-right: 10px;
-    }
   </style>
 </head>
+
 <body>
 
-<h1>Ishmeet</h1>
-<p><strong>Data Engineer</strong></p>
-<p>
-Portfolio in progress. Focused on building reliable batch and streaming data pipelines.
-</p>
+  <section class="hero">
+    <h1>Ishmeet</h1>
+    <p>Data Engineer | Building batch & streaming data pipelines</p>
 
-<p>
-<a href="#">GitHub (coming soon)</a>
-<a href="#">LinkedIn (coming soon)</a>
-</p>
+    <div>
+      <a href="#projects" class="primary-btn">Explore My Work</a>
+      <a href="#" class="secondary-btn">Download CV</a>
+    </div>
+  </section>
 
-<h2>Projects</h2>
+  <h2 id="projects">Projects</h2>
 
-<div class="project">
-  <h3>Batch Data Pipeline (Placeholder)</h3>
+  <div class="project">
+    <h3>Batch Data Pipeline (Placeholder)</h3>
+    <p>
+      End-to-end ETL pipeline demonstrating ingestion, transformation,
+      and loading of analytics data.
+    </p>
+    <p class="stack">
+      Python · Spark · Airflow · Cloud Storage · Data Warehouse
+    </p>
+    <p><em>Code and architecture coming soon.</em></p>
+  </div>
+
+  <div class="project">
+    <h3>Streaming Data Pipeline (Placeholder)</h3>
+    <p>
+      Real-time data processing pipeline for event ingestion and aggregation.
+    </p>
+    <p class="stack">
+      Kafka · Spark Structured Streaming · Docker
+    </p>
+    <p><em>Code and documentation coming soon.</em></p>
+  </div>
+
+  <h2>Skills</h2>
   <p>
-    End-to-end ETL pipeline demonstrating ingestion, transformation,
-    and loading of analytics data.
+    Python, SQL, Spark, Kafka, Airflow, Cloud Platforms, Data Warehousing
   </p>
-  <p class="stack">
-    Python · Spark · Airflow · Cloud Storage · Data Warehouse
-  </p>
-  <p><em>Code and architecture coming soon.</em></p>
-</div>
-
-<div class="project">
-  <h3>Streaming Data Pipeline (Placeholder)</h3>
-  <p>
-    Real-time data processing pipeline for event ingestion and aggregation.
-  </p>
-  <p class="stack">
-    Kafka · Spark Structured Streaming · Docker
-  </p>
-  <p><em>Code and documentation coming soon.</em></p>
-</div>
-
-<h2>Skills</h2>
-<p>
-Python, SQL, Spark, Kafka, Airflow, Cloud Platforms, Data Warehousing
-</p>
 
 </body>
 </html>
