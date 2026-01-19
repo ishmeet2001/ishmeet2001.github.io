@@ -111,6 +111,22 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
     .btn.secondary {
       background: transparent;
       color: var(--text);
@@ -133,7 +149,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
+      gap: 20px;
     }
 
     .card {
@@ -142,6 +158,10 @@
       border-radius: var(--radius);
       padding: 20px;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 100%;
     }
 
     .card h3 {
@@ -157,14 +177,15 @@
 
     .card p {
       color: #2f3b4f;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
+      flex: 1;
     }
 
     .stack {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     .chip {
@@ -180,7 +201,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 12px;
     }
 
     .pill {
@@ -200,6 +221,74 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    .timeline-bar {
+      position: relative;
+      display: flex;
+      gap: 22px;
+      padding: 12px 4px 6px;
+      align-items: flex-start;
+    }
+
+    .timeline-bar::before {
+      content: "";
+      position: absolute;
+      inset: 24px 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(17, 140, 125, 0.65), rgba(240, 180, 41, 0.55));
+      z-index: 0;
+    }
+
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 6px;
+      align-items: flex-start;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .timeline-step:hover { transform: translateY(-3px); color: var(--accent-2); }
+
+    .timeline-step .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 3px solid var(--accent-2);
+      margin: 0 auto;
+      box-shadow: 0 8px 18px rgba(17, 140, 125, 0.2);
+    }
+
+    .timeline-step .time {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+
+    .timeline-step .title {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timeline-step .detail {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .contact {
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .contact .link-row {
+      justify-content: center;
     }
 
     .footer {
@@ -235,11 +324,60 @@
         </div>
         <div class="cta-row">
           <a class="btn" href="#projects">View Projects</a>
-          <a class="btn secondary" href="https://github.com/ishmeet2001" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn secondary" href="https://www.linkedin.com/in/ishmeetkaur-ika47/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn secondary" href="resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          <a class="btn secondary" href="https://github.com/ishmeet2001" target="_blank" rel="noreferrer">
+            <span class="sr-only">GitHub</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.25 1.87 1.25 1.08 1.85 2.83 1.31 3.52 1 .1-.8.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.47-2.37 1.24-3.2-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.65.24 2.87.12 3.17.77.83 1.24 1.9 1.24 3.2 0 4.58-2.8 5.6-5.48 5.9.43.37.81 1.1.81 2.23v3.3c0 .32.22.69.82.58A12 12 0 0 0 12 .5Z"/>
+            </svg>
+          </a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/ishmeetkaur-ika47/" target="_blank" rel="noreferrer">
+            <span class="sr-only">LinkedIn</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M20.45 20.45h-3.55v-5.4c0-1.28-.02-2.92-1.78-2.92-1.78 0-2.05 1.39-2.05 2.82v5.5H9.52v-11h3.4v1.5h.05c.47-.9 1.62-1.85 3.34-1.85 3.58 0 4.24 2.36 4.24 5.44v5.9ZM5.34 7.94a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56v-11h3.56v11ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0Z"/>
+            </svg>
+          </a>
+        </div>
+  </div>
+</header>
+
+    <section>
+      <h2>Timeline</h2>
+      <div class="card">
+        <div class="timeline-bar">
+          <div class="timeline-step">
+            <div class="dot"></div>
+            <span class="time">2019–Jul 2023</span>
+            <span class="title">B.Tech | Electronics & Computer Engineering</span>
+            <span class="detail">JC Bose University of Science and Technology, India.</span>
+          </div>
+          <div class="timeline-step">
+            <div class="dot"></div>
+            <span class="time">Jan–Jul 2023</span>
+            <span class="title">Internship</span>
+            <span class="detail">.</span>
+          </div>
+          <div class="timeline-step">
+            <div class="dot"></div>
+            <span class="time">Aug 2023–Mar 2025</span>
+            <span class="title">Associate Systems Engineer | IBM</span>
+            <span class="detail"></span>
+          </div>
+          <div class="timeline-step">
+            <div class="dot"></div>
+            <span class="time">Sep 2025–Present</span>
+            <span class="title">M.Sc. in Computing Science (Big Data) | SFU</span>
+            <span class="detail"></span>
+          </div>
+          <div class="timeline-step">
+            <div class="dot"></div>
+            <span class="time">Jan 2026–Apr 2026</span>
+            <span class="title">Teaching Assistant</span>
+            <span class="detail">CMPT 473: Software Testing, Reliability and Security</span>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
 
     <section id="projects">
       <h2>Highlighted Projects</h2>
@@ -247,75 +385,81 @@
         <div class="card">
           <h3>Credit Risk Monitoring Dashboard</h3>
           <p>
-            Transforms LendingClub loan data into an explainable watchlist with governed cleaning, risk tiers,
-            KPI lift, and a logistic regression benchmark (ROC/AUC). Outputs scored segments, watchlist flags,
-            and ROC visualization ready for Tableau review.
+            Built an explainable credit-risk early-warning system using Python and Tableau. Engineered governed segmentation, KPI lift metrics, and logistic-regression scoring with ROC/AUC to identify emerging high-risk borrower groups
           </p>
           <div class="stack">
-            <span class="chip">Python</span>
-            <span class="chip">Pandas</span>
             <span class="chip">Scikit-learn</span>
             <span class="chip">Matplotlib</span>
             <span class="chip">Tableau</span>
 
           </div>
           <div class="link-row">
-            <a class="pill" href="https://github.com/ishmeet2001/Credit-Risk-Monitoring-Dashboard" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="pill" href="https://github.com/ishmeet2001/Credit-Risk-Monitoring-Dashboard" target="_blank" rel="noreferrer">
+              <span class="sr-only">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" width="18" height="18">
+                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.25 1.87 1.25 1.08 1.85 2.83 1.31 3.52 1 .1-.8.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.47-2.37 1.24-3.2-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.65.24 2.87.12 3.17.77.83 1.24 1.9 1.24 3.2 0 4.58-2.8 5.6-5.48 5.9.43.37.81 1.1.81 2.23v3.3c0 .32.22.69.82.58A12 12 0 0 0 12 .5Z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
         <div class="card">
-          <div class="meta">Streaming • Low Latency</div>
-          <h3>Kafka + Spark Streaming Pipeline</h3>
+          <h3>Airbnb End-to-End Data Engineering Pipeline</h3>
           <p>
-                 </p>
-          <div class="stack">
-            <span class="chip">Kafka</span>
-            <span class="chip">Spark Structured Streaming</span>
-            <span class="chip">Docker</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="meta">Analytics Engineering</div>
-          <h3>Dimensional Modeling for BI</h3>
-          <p>
-            Built fact/dimension layers and tests for stakeholder dashboards. Introduced governed KPIs and lineage
-            to keep self-serve analytics trustworthy.
+            Designed a production-grade medallion ELT pipeline (Bronze→Silver→Gold) for Airbnb listings using Snowflake, dbt, and Airflow. Delivered optimized SCD Type-2 models and BI-ready fact tables.
           </p>
           <div class="stack">
+            <span class="chip">Snowflake</span>
             <span class="chip">dbt</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Airflow</span>
+            <span class="chip">AWS S3</span>
+            <span class="chip">Python</span>
+          </div>
+          <div class="link-row">
+            <a class="pill" href="https://github.com/ishmeet2001/Airbnb-End-to-End-Data-Engineering-Pipeline" target="_blank" rel="noreferrer">
+              <span class="sr-only">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" width="18" height="18">
+                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.25 1.87 1.25 1.08 1.85 2.83 1.31 3.52 1 .1-.8.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.47-2.37 1.24-3.2-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.65.24 2.87.12 3.17.77.83 1.24 1.9 1.24 3.2 0 4.58-2.8 5.6-5.48 5.9.43.37.81 1.1.81 2.23v3.3c0 .32.22.69.82.58A12 12 0 0 0 12 .5Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>U.S. Multi-State Violent Crime Analysis</h3>
+          <p>
+Built a large-scale analytics system merging five-state NIBRS crime records into a unified dataset (1.4M+ records). Developed trend analysis, demographic insights, and a hotspot-prediction model deployed via Streamlit.
+          </p>
+          <div class="stack">
+            <span class="chip">PySpark</span>
+            <span class="chip">Python</span>
+            <span class="chip">Machine Learning</span>
+          </div>
+          <div class="link-row">
+            <a class="pill" href="https://github.com/ishmeet2001/U.S.-Multi-State-Violent-Crime-Analysis" target="_blank" rel="noreferrer">
+              <span class="sr-only">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" width="18" height="18">
+                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.25 1.87 1.25 1.08 1.85 2.83 1.31 3.52 1 .1-.8.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.47-2.37 1.24-3.2-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.65.24 2.87.12 3.17.77.83 1.24 1.9 1.24 3.2 0 4.58-2.8 5.6-5.48 5.9.43.37.81 1.1.81 2.23v3.3c0 .32.22.69.82.58A12 12 0 0 0 12 .5Z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Skills Snapshot</h2>
+      <h2>Skills</h2>
       <div class="card">
-        <div class="skills">
-          <span class="chip">Python</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Spark</span>
-          <span class="chip">Kafka</span>
-          <span class="chip">Airflow</span>
-          <span class="chip">dbt</span>
-          <span class="chip">Data Warehousing</span>
-          <span class="chip">Feature Engineering</span>
-          <span class="chip">Model Monitoring</span>
-          <span class="chip">Tableau / Power BI</span>
-        </div>
+        <p><strong>Data Engineering:</strong> Python, SQL, Spark, Kafka, Airflow, dbt, ETL Pipelines, Medallion Architecture</p>
+        <p><strong>Analytics &amp; ML:</strong> Pandas, Scikit-learn, Feature Engineering, Model Monitoring, Tableau</p>
+        <p><strong>Cloud &amp; Warehousing:</strong> AWS S3, Snowflake, BigQuery, Data Warehousing, Streamlit</p>
       </div>
     </section>
 
     <section>
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Open to data engineering and analytics engineering roles. Let’s build reliable pipelines together.</p>
+      <h2>Reach out</h2>
+      <div class="contact">
         <div class="link-row" style="margin-top: 12px;">
-          <a class="pill" href="mailto:contact@example.com">Email</a>
+          <a class="pill" href="mailto:ika47@sfu.ca">ika47@sfu.ca</a>
           <a class="pill" href="https://www.linkedin.com/in/ishmeetkaur-ika47" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
