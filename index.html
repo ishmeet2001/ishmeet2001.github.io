@@ -24,7 +24,7 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    .button.primary { background: white; color: #4a90e2; }
+    .button.primary { background: white; color: #eccee7; }
     .button.primary:hover { background: #e0e0e0; }
     .button.secondary { background: transparent; border: 2px solid white; color: white; }
     .button.secondary:hover { background: rgba(255,255,255,0.2); }
@@ -47,6 +47,18 @@
     /* Skills */
     .skills-group { background: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
     .skills-group strong { display: block; margin-bottom: 5px; color: #4a4a4a; }
+
+    /* Project Links */
+    .project-links { margin-top: 10px; }
+    .project-links a { display: inline-block; margin-right: 15px; padding: 8px 12px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+    .project-links a:hover { background: #9013fe; }
+
+    /* Footer */
+    footer { background: #2c2c2c; color: white; padding: 30px 20px; text-align: center; margin-top: 40px; }
+    footer p { margin-bottom: 10px; }
+    .social-links { margin-top: 15px; }
+    .social-links a { display: inline-block; margin: 0 10px; color: #4a90e2; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    .social-links a:hover { color: #9013fe; }
   </style>
 </head>
 <body>
@@ -57,7 +69,7 @@
     <p>Data Engineer | Analytics Engineering & Data Pipelines</p>
     <div class="buttons">
       <a href="#projects" class="button primary">View Projects</a>
-      <a href="resume.pdf" class="button secondary" download>Download CV</a>
+      <a href="https://github.com/ishmeet16" class="button secondary" target="_blank">GitHub Profile</a>
     </div>
   </section>
 
@@ -97,6 +109,16 @@
       <p>Modeled fact and dimension tables for BI dashboards, transforming raw datasets into structured insights for stakeholders.</p>
       <p class="stack">SQL · dbt · BigQuery/Snowflake · Airflow · Looker/Power BI</p>
     </div>
+
+    <div class="project">
+      <h3>Credit Risk Early Warning System</h3>
+      <p>Built a predictive credit risk monitoring workflow that transforms raw LendingClub loan data into an actionable early-warning system. Implemented automated feature engineering, risk-tier banding, and a logistic regression model (AUC: 0.69) to identify high-probability default customers before delinquency. Includes portfolio KPIs, watchlist generation, ROC curve evaluation, and explainable feature importance to support proactive risk intervention and lending decisions.</p>
+      <p class="stack">Python · Pandas · Scikit-learn · Logistic Regression · Feature Engineering · Data Governance</p>
+      <div class="project-links">
+        <a href="https://github.com/ishmeet16/credit-risk-early-warning" target="_blank">View on GitHub</a>
+        <a href="https://github.com/ishmeet16/credit-risk-early-warning#readme" target="_blank">Read Docs</a>
+      </div>
+    </div>
   </section>
 
   <!-- Skills -->
@@ -112,6 +134,16 @@
       <strong>Platforms:</strong> Cloud Storage, BigQuery / Snowflake, Data Warehousing
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Ishmeet | Data Engineer</p>
+    <div class="social-links">
+      <a href="https://github.com/ishmeet16" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/ishmeet16" target="_blank">LinkedIn</a>
+      <a href="mailto:contact@example.com">Email</a>
+    </div>
+  </footer>
 
 </body>
 </html>
