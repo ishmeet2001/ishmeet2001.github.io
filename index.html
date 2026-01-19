@@ -1,149 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ishmeet | Data Engineer</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { line-height: 1.6; background: #f5f5f5; color: #333; }
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
 
-    .hero {
-      background: linear-gradient(135deg, #4a90e2, #9013fe);
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
+    :root {
+      --bg: #0f172a;
+      --card: #0b2239;
+      --muted: #8aa4c9;
+      --text: #e9edf7;
+      --accent: #f6c851;
+      --accent-2: #2dd4bf;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
     }
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-    .hero p { font-size: 1.5rem; margin-bottom: 30px; }
-    .buttons { display: flex; justify-content: center; gap: 20px; }
-    .button {
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.12), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(246, 200, 81, 0.18), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 18px 60px;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(246, 200, 81, 0.18), rgba(45, 212, 191, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius);
+      padding: 42px 38px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.12), transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: var(--accent-2);
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin: 12px 0 10px;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 600;
       text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: 0.3s;
+      color: var(--bg);
+      background: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 30px rgba(246, 200, 81, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .button.primary { background: white; color: #eccee7; }
-    .button.primary:hover { background: #e0e0e0; }
-    .button.secondary { background: transparent; border: 2px solid white; color: white; }
-    .button.secondary:hover { background: rgba(255,255,255,0.2); }
 
-    /* Sections */
-    section { padding: 60px 20px; max-width: 900px; margin: auto; }
-    h2 { font-size: 2rem; margin-bottom: 20px; color: #4a4a4a; }
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: none;
+    }
 
-    /* Resume Snapshot */
-    ul { list-style: none; }
-    ul li { margin-bottom: 15px; }
-    ul li ul li { margin-bottom: 8px; }
+    .btn:hover { transform: translateY(-2px); }
 
-    /* Projects */
-    .project { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
-    .project h3 { margin-bottom: 10px; color: #4a4a4a; }
-    .project p { margin-bottom: 8px; }
-    .stack { font-size: 0.9rem; color: #777; }
+    section {
+      margin-top: 38px;
+    }
 
-    /* Skills */
-    .skills-group { background: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
-    .skills-group strong { display: block; margin-bottom: 5px; color: #4a4a4a; }
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+    }
 
-    /* Project Links */
-    .project-links { margin-top: 10px; }
-    .project-links a { display: inline-block; margin-right: 15px; padding: 8px 12px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-    .project-links a:hover { background: #9013fe; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
 
-    /* Footer */
-    footer { background: #2c2c2c; color: white; padding: 30px 20px; text-align: center; margin-top: 40px; }
-    footer p { margin-bottom: 10px; }
-    .social-links { margin-top: 15px; }
-    .social-links a { display: inline-block; margin: 0 10px; color: #4a90e2; text-decoration: none; font-weight: bold; transition: 0.3s; }
-    .social-links a:hover { color: #9013fe; }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .meta {
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #cdd8e8;
+      margin-bottom: 12px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .link-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(45, 212, 191, 0.12);
+      color: var(--accent-2);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      transition: transform 0.15s ease;
+    }
+
+    .pill:hover { transform: translateY(-2px); }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 28px 24px; }
+      .hero-top { gap: 12px; }
+      .cta-row { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Ishmeet</h1>
-    <p>Data Engineer | Analytics Engineering & Data Pipelines</p>
-    <div class="buttons">
-      <a href="#projects" class="button primary">View Projects</a>
-      <a href="https://github.com/ishmeet16" class="button secondary" target="_blank">GitHub Profile</a>
-    </div>
-  </section>
-
-  <!-- Resume Snapshot -->
-  <section>
-    <h2>Resume Snapshot</h2>
-    <ul>
-      <li><strong>Education:</strong> Master’s in Big Data, SFU (in progress)</li>
-      <li><strong>Experience:</strong>
-        <ul>
-          <li>Teaching Assistant — Supported students in data systems courses, labs, and grading.</li>
-          <li>Personal projects — Built batch and streaming pipelines using Spark, Kafka, and Airflow.</li>
-        </ul>
-      </li>
-      <li><strong>Skills:</strong> Python, SQL, Spark, Kafka, Airflow, dbt, Data Warehousing, Cloud Platforms</li>
-    </ul>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>Batch Data Pipeline</h3>
-      <p>Built an end-to-end ETL pipeline to move raw data into a cloud warehouse and prepare analytics-ready datasets.</p>
-      <p class="stack">Python · Spark · Airflow · Cloud Storage · Data Warehouse</p>
-    </div>
-
-    <div class="project">
-      <h3>Streaming Data Pipeline</h3>
-      <p>Developed a real-time pipeline for processing events with Spark Structured Streaming and Kafka, designed for low-latency analytics.</p>
-      <p class="stack">Kafka · Spark Structured Streaming · Docker</p>
-    </div>
-
-    <div class="project">
-      <h3>Analytics Engineering Pipeline</h3>
-      <p>Modeled fact and dimension tables for BI dashboards, transforming raw datasets into structured insights for stakeholders.</p>
-      <p class="stack">SQL · dbt · BigQuery/Snowflake · Airflow · Looker/Power BI</p>
-    </div>
-
-    <div class="project">
-      <h3>Credit Risk Early Warning System</h3>
-      <p>Built a predictive credit risk monitoring workflow that transforms raw LendingClub loan data into an actionable early-warning system. Implemented automated feature engineering, risk-tier banding, and a logistic regression model (AUC: 0.69) to identify high-probability default customers before delinquency. Includes portfolio KPIs, watchlist generation, ROC curve evaluation, and explainable feature importance to support proactive risk intervention and lending decisions.</p>
-      <p class="stack">Python · Pandas · Scikit-learn · Logistic Regression · Feature Engineering · Data Governance</p>
-      <div class="project-links">
-        <a href="https://github.com/ishmeet16/credit-risk-early-warning" target="_blank">View on GitHub</a>
-        <a href="https://github.com/ishmeet16/credit-risk-early-warning#readme" target="_blank">Read Docs</a>
+  <div class="shell">
+    <header>
+      <div class="hero-top">
+        <div>
+          <span class="eyebrow">Data Engineer · Analytics Engineering</span>
+          <h1>Ishmeet</h1>
+          <p class="subtitle">
+            I build reliable data pipelines and credit analytics workflows that turn raw events into governed,
+            decision-grade insights. Currently focused on early warning systems, streaming ingestion, and
+            analytics engineering for high-trust reporting.
+          </p>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn secondary" href="https://github.com/ishmeet16" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="https://linkedin.com/in/ishmeet16" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Skills -->
-  <section>
-    <h2>Skills</h2>
-    <div class="skills-group">
-      <strong>Data Engineering:</strong> Python, SQL, Spark, Kafka, Airflow, Docker
-    </div>
-    <div class="skills-group">
-      <strong>Analytics & BI:</strong> dbt, Dimensional Modeling, SQL Analytics, Looker / Power BI
-    </div>
-    <div class="skills-group">
-      <strong>Platforms:</strong> Cloud Storage, BigQuery / Snowflake, Data Warehousing
-    </div>
-  </section>
+    <section id="projects">
+      <h2>Highlighted Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="meta">Early Warning • Credit Risk</div>
+          <h3>Credit Risk Early Warning System</h3>
+          <p>
+            Transforms LendingClub loan data into an explainable watchlist with governed cleaning, risk tiers,
+            KPI lift, and a logistic regression benchmark (ROC/AUC). Outputs scored segments, watchlist flags,
+            and ROC visualization ready for Tableau/Excel review.
+          </p>
+          <div class="stack">
+            <span class="chip">Python</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">Matplotlib</span>
+          </div>
+          <div class="link-row">
+            <a class="pill" href="https://github.com/ishmeet16/credit-risk-early-warning" target="_blank" rel="noreferrer">Repo</a>
+            <a class="pill" href="https://public.tableau.com/views/your-dashboard-link" target="_blank" rel="noreferrer">Tableau</a>
+          </div>
+        </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Ishmeet | Data Engineer</p>
-    <div class="social-links">
-      <a href="https://github.com/ishmeet16" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/ishmeet16" target="_blank">LinkedIn</a>
-      <a href="mailto:contact@example.com">Email</a>
-    </div>
-  </footer>
+        <div class="card">
+          <div class="meta">Streaming • Low Latency</div>
+          <h3>Kafka + Spark Streaming Pipeline</h3>
+          <p>
+            Real-time ingestion and aggregation pipeline for event data with windowed metrics, late-arrival handling,
+            and sink to warehouse for BI. Optimized for sub-second SLA on consumer lag.
+          </p>
+          <div class="stack">
+            <span class="chip">Kafka</span>
+            <span class="chip">Spark Structured Streaming</span>
+            <span class="chip">Docker</span>
+          </div>
+        </div>
 
+        <div class="card">
+          <div class="meta">Analytics Engineering</div>
+          <h3>Dimensional Modeling for BI</h3>
+          <p>
+            Built fact/dimension layers and tests for stakeholder dashboards. Introduced governed KPIs and lineage
+            to keep self-serve analytics trustworthy.
+          </p>
+          <div class="stack">
+            <span class="chip">dbt</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Airflow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills Snapshot</h2>
+      <div class="card">
+        <div class="skills">
+          <span class="chip">Python</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Spark</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">Airflow</span>
+          <span class="chip">dbt</span>
+          <span class="chip">Data Warehousing</span>
+          <span class="chip">Feature Engineering</span>
+          <span class="chip">Model Monitoring</span>
+          <span class="chip">Tableau / Power BI</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Open to data engineering and analytics engineering roles. Let’s build reliable pipelines together.</p>
+        <div class="link-row" style="margin-top: 12px;">
+          <a class="pill" href="mailto:contact@example.com">Email</a>
+          <a class="pill" href="https://linkedin.com/in/ishmeet16" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Ishmeet. Built with clean data pipelines and a bias for clarity.
+    </div>
+  </div>
 </body>
 </html>
