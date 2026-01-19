@@ -1,20 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishmeet Kaur | Data Engineer</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+    :root {
+      --bg: #fdfdfd;
+      --card: #ffffff;
+      --muted: #5b6472;
+      --text: #0f172a;
+      --accent: #f0b429;
+      --accent-2: #118c7d;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(17, 140, 125, 0.08), transparent 32%),
+        radial-gradient(circle at 80% 0%, rgba(240, 180, 41, 0.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 18px 60px;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(240, 180, 41, 0.12), rgba(17, 140, 125, 0.1));
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: var(--radius);
+      padding: 42px 38px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.6), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(17, 140, 125, 0.12);
+      border: 1px solid rgba(17, 140, 125, 0.35);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: var(--accent-2);
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin: 12px 0 10px;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #0f172a;
+      background: var(--accent);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      box-shadow: 0 12px 30px rgba(240, 180, 41, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    section {
+      margin-top: 38px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .meta {
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #2f3b4f;
+      margin-bottom: 12px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(17, 140, 125, 0.08);
+      color: var(--text);
+      font-size: 0.9rem;
+      border: 1px solid rgba(17, 140, 125, 0.18);
+    }
+
+    .link-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(17, 140, 125, 0.1);
+      color: var(--accent-2);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(17, 140, 125, 0.2);
+      transition: transform 0.15s ease;
+    }
+
+    .pill:hover { transform: translateY(-2px); }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 28px 24px; }
+      .hero-top { gap: 12px; }
+      .cta-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
 <body>
   <div class="shell">
     <header>
       <div class="hero-top">
         <div>
-          <span class="eyebrow">Data Engineer · Big Data · Analytics</span>
-          <h1>Ishmeet Kaur</h1>
+          <span class="eyebrow">Data Engineer · Analytics Engineering</span>
+          <h1>Ishmeet</h1>
           <p class="subtitle">
-            Data engineer focused on building reliable pipelines and analytics workflows using Python, SQL, Spark, and AWS.
-            Experienced in troubleshooting data systems and turning raw events into decision-grade dashboards.
+            
           </p>
         </div>
-
         <div class="cta-row">
           <a class="btn" href="#projects">View Projects</a>
-          <a class="btn secondary" href="#skills">Skills</a>
-          <a class="btn secondary" href="#contact">Reach Out</a>
           <a class="btn secondary" href="https://github.com/ishmeet2001" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn secondary" href="https://www.linkedin.com/in/ishmeetkaur-ika47/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
@@ -25,40 +245,19 @@
       <h2>Highlighted Projects</h2>
       <div class="grid">
         <div class="card">
-          <h3>Big Data Crime Analysis Pipeline (2020–2024)</h3>
-          <p>
-            Cleaned and processed multi-year U.S. crime datasets using Python, SQL, and Spark, stored outputs in AWS S3,
-            and visualized trends with Streamlit/Dash for stakeholder-ready insights.
-          </p>
-          <div class="stack">
-            <span class="chip">Python</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Spark</span>
-            <span class="chip">AWS S3</span>
-            <span class="chip">Streamlit</span>
-            <span class="chip">Dash</span>
-            <span class="chip">Matplotlib</span>
-          </div>
-          <!-- Add your link when ready -->
-          <!--
-          <div class="link-row">
-            <a class="pill" href="YOUR_PROJECT_LINK" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-          -->
-        </div>
-
-        <div class="card">
           <h3>Credit Risk Monitoring Dashboard</h3>
           <p>
-            Built a credit-risk watchlist workflow with governed cleaning, risk tiers, and a logistic regression benchmark,
-            producing segments and visuals ready for BI review.
+            Transforms LendingClub loan data into an explainable watchlist with governed cleaning, risk tiers,
+            KPI lift, and a logistic regression benchmark (ROC/AUC). Outputs scored segments, watchlist flags,
+            and ROC visualization ready for Tableau review.
           </p>
           <div class="stack">
             <span class="chip">Python</span>
             <span class="chip">Pandas</span>
             <span class="chip">Scikit-learn</span>
-            <span class="chip">Tableau</span>
             <span class="chip">Matplotlib</span>
+            <span class="chip">Tableau</span>
+
           </div>
           <div class="link-row">
             <a class="pill" href="https://github.com/ishmeet2001/Credit-Risk-Monitoring-Dashboard" target="_blank" rel="noreferrer">GitHub</a>
@@ -66,55 +265,64 @@
         </div>
 
         <div class="card">
+          <div class="meta">Streaming • Low Latency</div>
           <h3>Kafka + Spark Streaming Pipeline</h3>
           <p>
-            Built a low-latency ingestion pipeline using Kafka and Spark Structured Streaming, containerized with Docker
-            for repeatable local runs and scalable deployment patterns.
-          </p>
+                 </p>
           <div class="stack">
             <span class="chip">Kafka</span>
             <span class="chip">Spark Structured Streaming</span>
             <span class="chip">Docker</span>
           </div>
-          <!-- Add your link when ready -->
+        </div>
+
+        <div class="card">
+          <div class="meta">Analytics Engineering</div>
+          <h3>Dimensional Modeling for BI</h3>
+          <p>
+            Built fact/dimension layers and tests for stakeholder dashboards. Introduced governed KPIs and lineage
+            to keep self-serve analytics trustworthy.
+          </p>
+          <div class="stack">
+            <span class="chip">dbt</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Airflow</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Relevant Skills</h2>
+    <section>
+      <h2>Skills Snapshot</h2>
       <div class="card">
         <div class="skills">
           <span class="chip">Python</span>
           <span class="chip">SQL</span>
           <span class="chip">Spark</span>
-          <span class="chip">Hadoop</span>
           <span class="chip">Kafka</span>
-          <span class="chip">AWS S3</span>
           <span class="chip">Airflow</span>
           <span class="chip">dbt</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">Streamlit</span>
-          <span class="chip">Dash</span>
+          <span class="chip">Data Warehousing</span>
+          <span class="chip">Feature Engineering</span>
+          <span class="chip">Model Monitoring</span>
           <span class="chip">Tableau / Power BI</span>
-          <span class="chip">Data Modeling</span>
-          <span class="chip">Data Quality & RCA</span>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Reach Out</h2>
+    <section>
+      <h2>Contact</h2>
       <div class="card">
-        <p>Open to data engineering and analytics engineering roles. Reach out for opportunities or collaborations.</p>
+        <p>Open to data engineering and analytics engineering roles. Let’s build reliable pipelines together.</p>
         <div class="link-row" style="margin-top: 12px;">
-          <a class="pill" href="mailto:ika47@sfu.ca">Email</a>
-          <a class="pill" href="https://www.linkedin.com/in/ishmeetkaur-ika47/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill" href="https://github.com/ishmeet2001" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="pill" href="mailto:contact@example.com">Email</a>
+          <a class="pill" href="https://www.linkedin.com/in/ishmeetkaur-ika47" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </section>
 
-    <div class="footer">© 2026 Ishmeet.</div>
+    <div class="footer">
+      © 2026 Ishmeet.</div>
   </div>
 </body>
+</html>
